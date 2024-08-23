@@ -15,6 +15,19 @@ class Solution {
         }
 
         return (str1.substring(0, str1len));
+
+//Replace method of a string
+    //      if ((str1 + str2 ).equals(str2 + str1))
+    //     {
+    //      for (int i = Math.min(str1len,str2len); i >=1; --i)
+    // {
+    //     if(str1.replace(str1.substring(0,i),"").isEmpty() && str2.replace(str1.substring(0,i),"").isEmpty() )
+    //     {
+    //         return str1.substring(0,i);
+    //     }
+    // }
+        
+    // }
 }}
 
 
