@@ -38,8 +38,24 @@ class Solution {
 
 // Example 1:
 
-// Input: nums = [1,2,3,4]
+// Input: nums = [1,2,3,4] 
 // Output: [24,12,8,6]
+// leftproduct[0] = 1
+// leftproduct[1] = 1 * nums[0 = 1] = 1
+// leftproduct[2] = 2 * nums[1 = 2] = 2
+// leftproduct[3] = 2 * nums[2 = 3] = 6
+
+// rightProducts[3] = 1
+// rightproduct[2] = 1 * nums[3 =4] = 4
+// rightproductproduct[1] = 4 * nums[3] = 12
+// rightproduct[0] = 12 * nums[1] = 24
+
+// answer [0] = 24 * 1 = 24
+// answer[1] = 12 *1 =12
+// answer[2] = 4 *2 = 8
+// answwer[4] = 3 * 2 = 6
+
+
 // Example 2:
 
 // Input: nums = [-1,1,0,-3,3]
