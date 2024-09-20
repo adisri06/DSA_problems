@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class mergesort {
@@ -28,35 +27,45 @@ public class mergesort {
     }
 
     public static void mergeArray(int arr[], int start, int last) {
-        System.out.println("merging arrays with " + start + "   " + last);
-
-        if (last - start > 1) {
-            int mid = (start + last) / 2;
+        System.out.println("merging arrays with  start :" + start + "  and last : " + last);
+        if (last - start > 1) { // Ensure more than one element to merge
+            int mid = start + (last - start) / 2;
+            System.out.println("Now units are start:  " + start + " mid:   " + mid+ " last:  " +last);
             mergeArray(arr, start, mid);
-            System.out.println("Done with first half");
+            System.out.println("Now new units are start:  " + start + " mid:   " + mid+ " last:  " +last);
 
-            mergeArray(arr, mid, last);
-            System.out.println("Done with second half");
-
+            mergeArray(arr, mid, last);  // Pass 'last' directly here
             merge(arr, start, mid, last);
         }
+
     }
 
     public static void merge(int arr[], int start, int mid, int last) {
         System.out.println("Meging smallest possible arrray ----------");
 
-        int[] Left = Arrays.copyOfRange(arr, start, mid);
-        int[] Right = Arrays.copyOfRange(arr, mid, last);
-        int i = 0, j = 0;
+        int[] newArray = new int[last -start];
+        int leftpointer = start, midpointer = mid, x=0 ;
 
-        while (start < last) {
-            if (j >= Right.length || (i < Left.length && Left[i] <= Right[j])) {
-                System.out.println("Left increment: arr[" + start + "] = " + Left[i]);
-                arr[start++] = Left[i++];
-            } else {
-                System.out.println("Right increment: arr[" + start + "] = " + Right[j]);
-                arr[start++] = Right[j++];
+        while(leftpointer< mid && midpointer< last ){
+            if(arr[leftpointer]< arr[midpointer]){
+                newArray[x++] = arr[leftpointer++];
             }
+            else{
+                newArray[x++] = arr[midpointer++];
+
+            }
+
+        }
+        while(leftpointer< mid)
+        {
+            newArray[x++] = arr[leftpointer++];
+        }
+        while(midpointer< last)
+        {
+            newArray[x++] = arr[midpointer++];
+        }
+        for (int i = 0; i < newArray.length; i++) {
+            arr[start + i] = newArray[i];
         }
     }
 }
