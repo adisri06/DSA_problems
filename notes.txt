@@ -32,6 +32,49 @@ Notes for interview
 		( IMP )remove(Object obj): Removes the first occurrence of the specified element from the list if it exists.
 		clear(): The clear method removes all elements from the ArrayList, leaving it empty.
 
+3. Linked Lists - Interview Notes (Expanded)
+
+	1.	Definition:
+	•	A data structure where elements (nodes) are linked in a sequence. Each node contains:
+	•	Data: The value stored (e.g., a city’s name).
+	•	Next: A reference/pointer to the next node.
+
+	2.	Memory Allocation:
+	•	Non-continuous; nodes are allocated anywhere in memory.
+	•	Each node connects to the next, forming a sequence.
+	•	Last node’s pointer is null (end of the list).
+
+	3.	Key Features of Singly Linked Lists:
+	•	One-Way Flow: Nodes link only to the next node.
+	•	Head Node: Starting point of the list.
+	•	Dynamic memory allocation—memory is assigned only when a node is added.
+
+	4.	Advantages Over Arrays:
+	•	Flexible Size: No need to predefine size.
+	•	Efficient Updates: Easy to add/remove nodes without rearranging.
+
+	5.	Manipulation Examples:
+	•	Add Node: Update the next reference of the preceding node to include the new node.
+	•	Example: Add Philadelphia between Richmond and Washington by adjusting links.
+	•	Remove Node: Skip the node by updating the preceding node’s reference to point to the next node.
+	•	Example: Remove Philadelphia by connecting New York directly to Richmond.
+	•	Update Node Data: Modify the data in a node without changing the structure.
+
+	6.	Real-World Analogies:
+	•	Train journey: Each city (node) is connected in sequence. Adding/removing stops is like modifying a linked list.
+	•	Playlist or to-do list: Manage dynamic sequences of data.
+
+	7.	Key Concepts in Java:
+	•	Node Class: Defines individual nodes with data and a next reference.
+	•	LinkedList Class: Manages the head node and operations like add, remove, or update.
+	•	Head Node Initialization: Initially set to null for an empty list.
+
+	8.	Use Cases:
+	•	Ideal for dynamic data where elements are frequently added or removed.
+	•	Efficient for queues, playlists, or dynamic task management.
+	
+	9.	Key Takeaway:
+	•	Linked lists are simple yet powerful structures for managing dynamic data sequences efficiently. Singly linked lists are best for one-directional processing, while doubly linked lists allow two-way traversal.
 
 
 
