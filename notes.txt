@@ -31,6 +31,7 @@ Notes for interview
 		remove(int index): Remove the element at the specified position/
 		( IMP )remove(Object obj): Removes the first occurrence of the specified element from the list if it exists.
 		clear(): The clear method removes all elements from the ArrayList, leaving it empty.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Linked Lists 
 
@@ -201,6 +202,8 @@ Key Takeaway:
 	•	Doubly Linked Lists: Provide flexibility for complex scenarios, suitable for frequent updates and two-way traversal.
 
 Choosing between them depends on the application needs and trade-offs between memory usage and time complexity.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Stacks : 
 Interview Notes on Stacks
@@ -245,7 +248,7 @@ Interview Notes on Stacks
 
 Key Takeaway: Stacks are simple but powerful tools essential for managing ordered tasks, undo mechanisms, function calls, and more in computer science.
  
- -------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Queues:
 Notes on Queues
@@ -266,3 +269,175 @@ Notes on Queues
 	•	Printer Spooling: Print jobs are organized in a queue to avoid chaos.
 	•	Network Routing: Routers use queues to process packets efficiently.
 	•	Importance: Queues ensure fairness, organization, and efficiency in managing tasks across systems and networks, preventing chaos and ensuring smooth operations.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+HashMap: 
+
+What is a HashMap?
+
+	•	Definition: A HashMap is a data structure that stores data in key-value pairs, where:
+	•	Key: Unique identifier (e.g., song title).
+	•	Value: Associated information (e.g., artist name).
+	•	Purpose: Quick and efficient data retrieval using hash algorithms.
+
+Key Features:
+
+	1.	Fast Retrieval: HashMaps use hashing to locate values quickly.
+	2.	Keys Must Be Unique: Duplicate keys overwrite previous values.
+	3.	Unordered Storage: The order of insertion doesn’t affect the storage or retrieval order.
+	4.	Key-Value Pair Example:
+	•	Key: “Satisfaction”
+	•	Value: “The Rolling Stones”
+
+Operations in HashMaps:
+
+	1.	Add Elements (put):
+
+map.put("Satisfaction", "The Rolling Stones");
+
+
+	2.	Retrieve Value (get):
+
+String artist = map.get("Satisfaction");
+
+
+	3.	Check Key Existence (containsKey):
+
+boolean exists = map.containsKey("Satisfaction");
+
+
+	4.	Remove Entry (remove):
+
+map.remove("Satisfaction");
+
+
+	5.	Iterate Over Entries:
+
+for (Map.Entry<String, String> entry : map.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
+}
+
+
+	6.	Get Size of HashMap (size):
+
+int size = map.size();
+
+
+	7.	Clear All Entries (clear):
+
+map.clear();
+
+
+Important Notes:
+
+	1.	Key Overwriting: Adding duplicate keys updates the value.
+	•	Example: "L-O-V-E" changes artist from “Alvin and the Chipmunks” to “Nat King Cole.”
+	2.	Hash Algorithms: HashMap uses built-in hash functions for keys like String or int.
+
+Advantages:
+
+	•	Rapid lookup and insertion.
+	•	Handles large datasets efficiently.
+
+Disadvantages:
+
+	•	Not thread-safe (use ConcurrentHashMap for concurrency).
+	•	No guaranteed order of keys/values.
+
+Performance Characteristics:
+
+	•	Time Complexity:
+	•	Average: O(1) for insert, delete, and lookup.
+	•	Worst-case: O(n) due to hash collisions.
+	•	Memory Usage:
+	•	Requires extra memory for storage and resizing.
+
+Key Features:
+
+	1.	Automatically resizes when capacity is exceeded (doubles size).
+	2.	Efficient with well-distributed keys to avoid collisions.
+	3.	Suitable for dynamic datasets where size changes unpredictably.
+
+Common Use Cases:
+
+	1.	Caching: Frequently accessed data (e.g., user profiles).
+	2.	Counting Occurrences: E.g., students registered per class.
+	3.	Quick Lookups: Search by identifiers like student IDs.
+	4.	Grouping Data: E.g., students by grade.
+
+When to Use HashMap:
+
+	•	Frequent Lookups: Fast search by unique identifiers.
+	•	Dynamic Data Size: Handles frequent size changes efficiently.
+	•	Non-Ordered Data: Order of entries is not important.
+
+Trade-Offs:
+
+	•	High Memory Usage: More overhead than simpler structures like ArrayList.
+	•	Hash Collisions: Can slow operations in rare cases.
+
+Alternatives to HashMap:
+
+	1.	TreeMap: Use when sorting keys is required; slower operations.
+	2.	ArrayList/LinkedList: For ordered data or memory-sensitive applications.
+	3.	Standard Arrays: For static data with minimal memory usage.
+
+Best Practices for HashMap:
+
+	•	Ensure keys are well-distributed to minimize collisions.
+	•	Avoid using large datasets if memory is a constraint.
+	•	Use TreeMap or other structures for sorted data requirements.
+
+Summary:
+HashMap is ideal for caching, counting frequencies, and fast lookups. Be mindful of its memory usage and collision risks. Select a data structure based on project needs like speed, memory, or ordering.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+LinkedHashMap in Java (Interview Notes)
+
+Scenario: University class registration system with waiting lists.
+	1.	Problem: Maintain order of students on a waitlist and allow quick lookup.
+	2.	Solution: Use LinkedHashMap (from java.util package).
+	•	Maintains insertion order of entries.
+	•	Provides efficient access similar to a HashMap.
+
+Why LinkedHashMap?
+	•	HashMap: Does not guarantee entry order.
+	•	LinkedHashMap: Maintains order of insertion.
+	•	Useful for scenarios where processing order is essential.
+
+Steps to Use LinkedHashMap:
+	1.	Import: import java.util.LinkedHashMap;
+	2.	Create: LinkedHashMap<Integer, String> students = new LinkedHashMap<>();
+	•	Keys: Student IDs.
+	•	Values: Student names.
+	3.	Add Entries: Use put(key, value) method.
+	•	Example: students.put(101, "Alice");
+	4.	Iterate:
+	•	Use a for-each loop to print entries:
+
+for (Map.Entry<Integer, String> entry : students.entrySet()) {
+    System.out.println("Position: " + entry.getKey() + ", Name: " + entry.getValue());
+}
+
+Key Features:
+	•	Maintains Insertion Order:
+	•	Entries are printed in the same order they were added.
+	•	Supports Updates:
+	•	Updating a value does not change the order.
+	•	Example: students.put(104, "Lydia Apple"); retains position of entry 104.
+	•	Efficient Access: Fast lookup by key.
+
+Comparison:
+	•	TreeMap: Maintains sorted order of keys (natural or custom).
+	•	LinkedHashMap: Maintains insertion order by default; supports access order (future topic).
+
+Use Case:
+	•	Waitlist Management:
+	•	Process students in the order they join.
+	•	Quickly fetch any student’s details.
+
+Benefits:
+	•	Balances order and efficiency.
+	•	Ideal for seamless registration systems.
