@@ -32,49 +32,237 @@ Notes for interview
 		( IMP )remove(Object obj): Removes the first occurrence of the specified element from the list if it exists.
 		clear(): The clear method removes all elements from the ArrayList, leaving it empty.
 
-3. Linked Lists - Interview Notes (Expanded)
+Linked Lists 
 
-	1.	Definition:
-	•	A data structure where elements (nodes) are linked in a sequence. Each node contains:
-	•	Data: The value stored (e.g., a city’s name).
-	•	Next: A reference/pointer to the next node.
+Definition:
 
-	2.	Memory Allocation:
-	•	Non-continuous; nodes are allocated anywhere in memory.
-	•	Each node connects to the next, forming a sequence.
-	•	Last node’s pointer is null (end of the list).
+	•	Linked List: A sequence-based data structure where each element (node) consists of:
+	•	Data: The value stored (e.g., a book title or city name).
+	•	Next: A pointer/reference to the next node in the sequence.
 
-	3.	Key Features of Singly Linked Lists:
-	•	One-Way Flow: Nodes link only to the next node.
-	•	Head Node: Starting point of the list.
-	•	Dynamic memory allocation—memory is assigned only when a node is added.
+Types of Linked Lists:
 
-	4.	Advantages Over Arrays:
-	•	Flexible Size: No need to predefine size.
-	•	Efficient Updates: Easy to add/remove nodes without rearranging.
+	1.	Singly Linked List:
+	•	Nodes are connected in one direction, linking only to the next node.
+	2.	Doubly Linked List:
+	•	Nodes are connected in both directions, linking to the next and previous nodes.
 
-	5.	Manipulation Examples:
-	•	Add Node: Update the next reference of the preceding node to include the new node.
-	•	Example: Add Philadelphia between Richmond and Washington by adjusting links.
-	•	Remove Node: Skip the node by updating the preceding node’s reference to point to the next node.
-	•	Example: Remove Philadelphia by connecting New York directly to Richmond.
-	•	Update Node Data: Modify the data in a node without changing the structure.
+Memory Allocation:
 
-	6.	Real-World Analogies:
-	•	Train journey: Each city (node) is connected in sequence. Adding/removing stops is like modifying a linked list.
-	•	Playlist or to-do list: Manage dynamic sequences of data.
+	•	Non-Continuous: Nodes are scattered in memory but are linked via pointers.
+	•	Dynamic: Memory is allocated when a node is added.
+	•	Node Composition:
+	•	Singly Linked List: Data + Next pointer.
+	•	Doubly Linked List: Data + Next pointer + Prev pointer.
 
-	7.	Key Concepts in Java:
-	•	Node Class: Defines individual nodes with data and a next reference.
-	•	LinkedList Class: Manages the head node and operations like add, remove, or update.
-	•	Head Node Initialization: Initially set to null for an empty list.
+Operations:
 
-	8.	Use Cases:
-	•	Ideal for dynamic data where elements are frequently added or removed.
-	•	Efficient for queues, playlists, or dynamic task management.
-	
-	9.	Key Takeaway:
-	•	Linked lists are simple yet powerful structures for managing dynamic data sequences efficiently. Singly linked lists are best for one-directional processing, while doubly linked lists allow two-way traversal.
+Insertions & Modifications:
+
+	1.	Singly Linked List:
+	•	Adding at the end: Attach a new node to the last node.
+	•	Adding in the middle: Traverse to the insertion point, then update pointers.
+	•	Example:
+
+// Insert new node after a specified node
+newNode.next = previousNode.next;
+previousNode.next = newNode;
 
 
+	2.	Doubly Linked List:
+	•	Adding anywhere is easier since each node links both ways.
+	•	Example:
 
+// Insert new node after a specified node
+newNode.next = previousNode.next;
+newNode.prev = previousNode;
+if (previousNode.next != null) {
+    previousNode.next.prev = newNode;
+}
+previousNode.next = newNode;
+
+
+
+Traversal:
+
+	1.	Singly Linked List:
+	•	One-directional, forward-only.
+	•	Example:
+
+current = current.next;
+
+
+	2.	Doubly Linked List:
+	•	Bi-directional, forward and backward traversal.
+	•	Useful for revisiting or planning ahead.
+
+Deletion:
+
+	•	Singly Linked List: Skip the node by updating the previous node’s pointer.
+	•	Doubly Linked List: Update both Prev and Next pointers of neighboring nodes.
+
+Time Complexity:
+
+Arrays:
+
+	1.	Access:
+	•	Time: O(1) (instant access using an index).
+	•	Example:
+
+int photo = photos[2]; // Access directly by index
+
+
+	2.	Insertion:
+	•	Time: O(n) (shifting elements to make space).
+	•	Example:
+
+// Insert in the middle
+for (int i = size; i > index; i--) {
+    photos[i] = photos[i - 1];
+}
+photos[index] = newPhoto;
+
+
+	3.	Deletion:
+	•	Time: O(n) (shifting elements to fill the gap).
+	•	Example:
+
+// Delete from the middle
+for (int i = index; i < size - 1; i++) {
+    photos[i] = photos[i + 1];
+}
+
+
+
+Linked Lists:
+
+	1.	Access:
+	•	Time: O(n) (traversal required to locate an element).
+	•	Example:
+
+Node current = head;
+while (index-- > 0) {
+    current = current.next;
+}
+
+
+	2.	Insertion:
+	•	At Start/End: O(1) (update pointers).
+	•	In Middle: O(n) (traversal to locate the position, then insertion).
+	•	Example:
+
+newNode.next = current.next;
+current.next = newNode;
+
+
+	3.	Deletion:
+	•	At Start/End: O(1) (update pointers).
+	•	In Middle: O(n) (traversal to locate the node, then deletion).
+	•	Example:
+
+current.next = current.next.next;
+
+Memory Usage:
+
+	•	Singly Linked List:
+	•	Minimal memory: One pointer per node.
+	•	Doubly Linked List:
+	•	Extra memory: Additional pointer (Prev) per node.
+	•	Suitable for complex data handling but can become memory-intensive in large-scale systems.
+
+Advantages:
+
+	1.	Singly Linked List:
+	•	Memory-efficient.
+	•	Suitable for sequential data processing.
+	•	Easy to implement and manage for simple use cases.
+	2.	Doubly Linked List:
+	•	Flexibility for two-way traversal.
+	•	Efficient for frequent additions or deletions in both directions.
+	•	Ideal for scenarios like navigation systems or where dynamic data changes are common.
+
+Key Concepts:
+
+	•	Node Class: Defines a node with data and pointer(s).
+	•	LinkedList Class: Manages operations like add, remove, and traverse.
+	•	Head Node: Starting point of the list; initialized as null for an empty list.
+
+Use Cases:
+
+	•	Singly Linked List:
+	•	Suitable for queues, playlists, or dynamic task management.
+	•	Doubly Linked List:
+	•	Used in navigation systems, undo-redo functionality, or applications requiring frequent backtracking.
+
+Key Takeaway:
+
+	•	Arrays: Offer quick access (O(1)), but are less flexible for insertions and deletions (O(n) for middle operations).
+	•	Singly Linked Lists: Memory-efficient, ideal for sequential tasks.
+	•	Doubly Linked Lists: Provide flexibility for complex scenarios, suitable for frequent updates and two-way traversal.
+
+Choosing between them depends on the application needs and trade-offs between memory usage and time complexity.
+
+Stacks : 
+Interview Notes on Stacks
+
+	1.	What is a Stack?
+	•	A linear data structure following the Last In, First Out (LIFO) principle.
+	•	Example: Stack of plates – the last plate added is the first one removed.
+	2.	Operations:
+	•	Push: Add an element to the top of the stack.
+	•	Pop: Remove the top element of the stack.
+	•	Peek: View the top element without removing it.
+	3.	Applications of Stacks:
+	•	Undo Mechanisms:
+	•	Actions are recorded on the stack.
+	•	Undo removes the top action (reverses the last action).
+	•	Function Calls:
+	•	Tracks return addresses and local variables for nested calls.
+	•	Example: Recursive function calls use stacks to manage execution.
+	•	Expression Conversion (Infix to Postfix):
+	•	Infix (e.g., 3 + 4 * 5) → Postfix (3 4 5 * +).
+	•	Operators are pushed and popped to ensure correct precedence.
+	4.	Example - Undo Mechanism:
+	•	Actions (e.g., typing): Pushed onto the stack.
+	•	Undo: Pops the last action and reverses it.
+	•	Ideal for step-by-step backtracking.
+	5.	Example - Function Call Stack:
+	•	Recursive example:
+	•	Function call stack grows with each recursive call (e.g., add(3,2) → add(4,1) → add(5,0)).
+	•	Base case reached: Stack unwinds (removes elements in reverse order).
+	6.	Example - Expression Conversion:
+	•	Convert 3 + 4 * 5 to postfix:
+	•	Push operators based on precedence.
+	•	Postfix expression: 3 4 5 * +.
+	•	Ensures computation order without ambiguity.
+	7.	Real-Life Analogies:
+	•	Navigating web pages (Back and Forward buttons).
+	•	Undoing steps in a text editor.
+	8.	Key Benefits:
+	•	Simplifies managing tasks in reverse order.
+	•	Ensures organized and error-free execution flow.
+	•	Efficiently handles nested or sequential tasks.
+
+Key Takeaway: Stacks are simple but powerful tools essential for managing ordered tasks, undo mechanisms, function calls, and more in computer science.
+ 
+ -------------------------------
+
+Queues:
+Notes on Queues
+
+	•	Definition: A queue is a linear data structure following the First In, First Out (FIFO) principle, where the first element added is the first to be removed.
+	•	Real-life analogy: Like a line at a coffee shop, the first person in line is served first.
+	•	Applications in Computing:
+	•	Operating Systems:
+	•	Used for CPU scheduling (e.g., First Come First Serve or FCFS scheduling).
+	•	Manages tasks like I/O requests and printer spooling, ensuring fairness and order.
+	•	Networking:
+	•	Handles data packets, ensuring they are processed in the correct order to avoid congestion and ensure reliability.
+	•	Prioritizes critical packets (e.g., video calls over file downloads).
+	•	Devices:
+	•	Keyboards, mice, and printers queue requests to the CPU for sequential processing.
+	•	Examples:
+	•	CPU Task Scheduling: Tasks are queued and processed in arrival order.
+	•	Printer Spooling: Print jobs are organized in a queue to avoid chaos.
+	•	Network Routing: Routers use queues to process packets efficiently.
+	•	Importance: Queues ensure fairness, organization, and efficiency in managing tasks across systems and networks, preventing chaos and ensuring smooth operations.
