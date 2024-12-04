@@ -1,3 +1,4 @@
+package DSA;
 
 public class binarySearchDemo {
     public boolean binarySearch(int[] arr, int target){

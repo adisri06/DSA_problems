@@ -1,3 +1,4 @@
+package DSA;
 class Solution {
     public int compress(char[] chars) {
         int n = chars.length;
