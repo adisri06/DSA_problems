@@ -441,3 +441,150 @@ Use Case:
 Benefits:
 	•	Balances order and efficiency.
 	•	Ideal for seamless registration systems.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Access Order LinkedHashMap
+
+	•	Overview:
+	•	A variant of LinkedHashMap that reorders entries based on access (i.e., get or put).
+	•	Helps implement LRU Cache and similar scenarios.
+
+Key Features:
+
+	1.	Access-Order Mode:
+	•	Enabled by setting accessOrder = true in the constructor:
+
+LinkedHashMap<>(initialCapacity, loadFactor, true);
+
+
+	•	Moves an entry to the end of the map whenever it is accessed (get/put).
+
+	2.	Operations:
+	•	put: Adds or updates an entry.
+	•	get: Accesses an entry and moves it to the end.
+	•	remove: Deletes an entry.
+	3.	Maintains Access Order:
+	•	Entries reorder dynamically based on recent usage.
+	•	Ideal for prioritizing frequently used or recently used elements.
+	4.	Eviction Policy (Optional):
+	•	Override removeEldestEntry(Map.Entry) to auto-remove the oldest entry:
+
+@Override
+protected boolean removeEldestEntry(Map.Entry eldest) {
+    return size() > MAX_SIZE;
+}
+
+Advantages:
+
+	•	Simplifies cache implementation (e.g., LRU Cache).
+	•	Efficient for access-tracking use cases.
+
+Common Use Cases:
+
+	•	LRU Cache: Manage data efficiently with limited size.
+	•	Frequency Counters: Track most-recently accessed items.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TreeMap Overview
+
+	•	A TreeMap stores key-value pairs and automatically sorts them based on:
+	•	Natural ordering (e.g., String keys are sorted alphabetically, Integer keys numerically).
+	•	Custom ordering using a Comparator.
+
+Key Features
+
+	1.	Automatic Sorting:
+	•	Keys are ordered in ascending natural order (e.g., A-Z or 0-9).
+	•	Supports custom order with a Comparator.
+	2.	Operations:
+	•	put(key, value): Adds entries, maintaining the sorted order.
+	•	get(key): Retrieves value by key.
+	•	remove(key): Deletes an entry by key.
+	3.	Custom Ordering:
+	•	Implement the Comparator interface to define sorting logic.
+	•	Pass the Comparator to the TreeMap constructor.
+
+Advantages
+
+	•	Ideal for scenarios requiring sorted data structures.
+	•	Dynamically adjusts order with every insertion.
+	•	Supports custom ordering for non-natural types.
+
+Use Cases
+
+	1.	University Registration: Maintain student names sorted alphabetically.
+	2.	Custom Sorting: Sort by specific fields like last name or priority.
+
+Comparator Basics
+
+	•	compare(T o1, T o2):
+	•	Returns:
+	•	Negative: o1 < o2 (e.g., “A” comes before “B”).
+	•	Zero: o1 == o2.
+	•	Positive: o1 > o2 (e.g., “Z” comes after “Y”).
+	•	Can handle custom sorting logic like sorting by last name.
+
+Example: Sorting by Last Name
+
+class LastNameComparator implements Comparator<String> {
+    public int compare(String s1, String s2) {
+        String lastName1 = s1.substring(s1.lastIndexOf(" ") + 1);
+        String lastName2 = s2.substring(s2.lastIndexOf(" ") + 1);
+        return lastName1.compareTo(lastName2);
+    }
+}
+
+// Usage
+TreeMap<String, String> treeMap = new TreeMap<>(new LastNameComparator());
+treeMap.put("Alice Johnson", "USA");
+treeMap.put("Bob Smith", "Canada");
+treeMap.put("Charlie Adams", "UK");
+
+	•	Outputs entries sorted by last name.
+
+Tips for Interviews
+
+	•	Mention natural ordering and custom ordering flexibility.
+	•	Highlight use of Comparator for tailored sorting.
+	•	Explain how TreeMap ensures consistent ordering in dynamic environments.
+
+What is a red-black tree?
+A red-black tree is a self-balancing binary search tree (BST) that efficiently maintains sorted data while ensuring balance. This tree structure is widely used in data structures such as Java's TreeMap and TreeSet to enhance the performance of search, insert, and delete operations.
+
+Key properties of a red-black tree:
+Node colors: Each node in the tree is either red or black.
+
+Root property: The root node is always black.
+
+Red node property: Red nodes cannot have red children (no two consecutive red nodes are allowed). This property ensures the tree remains balanced.
+
+Black height property: Every path from the root to a leaf or a null child must contain the same number of black nodes. This is known as the “black height”.
+
+Balanced structure: Red-black trees guarantee that no path is more than twice as long as any other path. This ensures the tree remains balanced, resulting in efficient performance.
+
+Operations in a red-black tree:
+Search: Just like in a binary search tree, searching in a red-black tree is performed in O(log n) time.
+
+Insert: When inserting a new node, the tree is initially treated as a regular binary search tree, followed by restructuring and recoloring to maintain the red-black properties. The restructuring (rotations and recoloring) ensures that the tree remains balanced.
+
+Delete: Similarly, when a node is deleted, the red-black properties might be violated, requiring a series of rotations and recoloring to restore balance.
+
+Why red-black trees are important:
+Self-balancing: Red-black trees automatically maintain a balanced structure, which guarantees efficient worst-case performance for operations like searching, insertion, and deletion.
+
+Efficient operations: The time complexity of search, insert, and delete operations in a red-black tree is O(log n) due to its balanced nature, making it suitable for performance-critical applications.
+
+Core features of TreeMap
+So, what makes TreeMap so special? Let's break it down:
+
+Sorted Order: Elements are automatically sorted based on the keys.
+
+Logarithmic Time Complexity: Due to the underlying Red-Black tree structure, operations like put(), remove(), and get() have a time complexity of O(log n).
+
+Navigable Map: It provides methods to navigate through the map, like firstKey(), lastKey(), higherKey(), lowerKey(), etc.
+
+Sorting: Unlike HashMap, TreeMap keeps the keys sorted. This feature is helpful when you need to iterate over the map in a specific order.
+
+Performance: Due to its tree-based structure, TreeMap operations (put(), get(), remove()) have O(log n) complexity, which is slower than HashMap's O(1) for the same operations. TreeMap operations typically have O(log n) time complexity, while HashMap operations average O(1), but can degrade to O(n) in the worst-case scenario. This distinction is important when discussing the performance implications of each data structure.
