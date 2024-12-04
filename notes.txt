@@ -587,4 +587,62 @@ Navigable Map: It provides methods to navigate through the map, like firstKey(),
 
 Sorting: Unlike HashMap, TreeMap keeps the keys sorted. This feature is helpful when you need to iterate over the map in a specific order.
 
-Performance: Due to its tree-based structure, TreeMap operations (put(), get(), remove()) have O(log n) complexity, which is slower than HashMap's O(1) for the same operations. TreeMap operations typically have O(log n) time complexity, while HashMap operations average O(1), but can degrade to O(n) in the worst-case scenario. This distinction is important when discussing the performance implications of each data structure.
+Performance: Due to its tree-based structure, TreeMap operations (put(), get(), remove()) have O(log n) complexity,
+ which is slower than HashMap's O(1) for the same operations. TreeMap operations typically have O(log n) 
+ time complexity, while HashMap operations average O(1), but can degrade to O(n) in the worst-case scenario. 
+ This distinction is important when discussing the performance implications of each data structure.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ Linear Search 
+	•	Concept: A simple algorithm that checks each item in a list sequentially until the target is found or the list ends.
+	•	How it Works:
+	1.	Start from the first item.
+	2.	Compare with the target.
+	3.	Return the index if a match is found; return -1 if not.
+	•	Time Complexity: O(N), where N is the number of elements.
+	•	Use Cases:
+	•	Ideal for small or unsorted datasets.
+	•	Drawbacks:
+	•	Inefficient for large datasets.
+	•	Not suitable for sorted data (use binary search instead).
+
+	Linear Search Time Complexity 
+	•	Time Complexity: O(n) — Time increases linearly with list size.
+	•	Example: For 10 items, 10 comparisons; for 1000 items, 1000 comparisons.
+	•	How It Works:
+	•	Compares each element to the target until found or list ends.
+	•	Worst case: checks all elements.
+	•	Use Case:
+	•	Simple, good for small or unsorted lists.
+	•	Inefficient for large datasets.
+	•	Why O(n): Worst case requires checking every element.
+	•	Alternative: Binary Search — O(log n), more efficient for large, sorted datasets.
+	•	Key Point: Linear search is easy to implement but less efficient for large data; binary search is preferred for sorted data.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Binary Search
+
+	•	What is Binary Search?
+	•	Efficient algorithm for finding a target value in sorted arrays.
+	•	Divide and conquer approach: halves the search space at each step.
+	•	How It Works:
+	•	Start with two pointers: left (start) and right (end) of the array.
+	•	Calculate the middle index (mid).
+	•	If the target is equal to mid, return the index.
+	•	If the target is smaller, adjust the right pointer to search the left half.
+	•	If the target is larger, adjust the left pointer to search the right half.
+	•	Repeat until the target is found or pointers cross (left > right).
+	•	Time Complexity:
+	•	O(log n) — Reduces the search space by half each time, making it very efficient for large datasets.
+	log(n)/log(2);
+	•	For large arrays, binary search significantly reduces comparisons compared to linear search.
+	•	Use Cases:
+	•	Ideal for large sorted datasets where multiple searches are needed.
+	•	Not suitable for unsorted data (requires sorting first).
+	•	When to Use:
+	•	When data is sorted or can be sorted easily.
+	•	For situations requiring efficient repeated searches in large datasets.
+	•	Key Advantage:
+	•	Faster than linear search for large datasets due to logarithmic time complexity.
+	•	Alternative:
+	•	Linear Search is better for unsorted data or small datasets.
