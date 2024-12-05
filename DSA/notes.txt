@@ -647,5 +647,24 @@ Performance: Due to its tree-based structure, TreeMap operations (put(), get(), 
 	•	Alternative:
 	•	Linear Search is better for unsorted data or small datasets.
 
+
+Feature                | Bubble Sort                              | Insertion Sort                          | Selection Sort                          
+-----------------------|------------------------------------------|-----------------------------------------|-----------------------------------------
+Algorithm Type         | Comparison-based, iterative             | Comparison-based, iterative             | Comparison-based, iterative             
+Key Idea               | Repeatedly swaps adjacent elements if   | Builds a sorted array one element at   | Finds the smallest/largest element and 
+                       | they are in the wrong order             | a time by picking and placing in the   | places it in its correct position       
+                       |                                          | correct position                        |                                        
+Best Case Time         | O(n) (already sorted)                   | O(n) (already sorted)                   | O(n^2)                                  
+Complexity             |                                          |                                         |                                        
+Worst Case Time        | O(n^2)                                  | O(n^2)                                  | O(n^2)                                  
+Complexity             |                                          |                                         |                                        
+Space Complexity       | O(1) (in-place)                         | O(1) (in-place)                         | O(1) (in-place)                         
+Stability              | Stable                                  | Stable                                  | Unstable (swapping can disrupt relative 
+                       |                                          |                                         | order)                                  
+Efficiency             | Slowest, many swaps                     | Efficient for small or partially sorted | Better than Bubble but worse than       
+                       |                                          | arrays                                  | Insertion for small datasets            
+Usage Scenario         | Rarely used in practice                 | Good for small datasets or nearly       | When minimizing swaps is important      
+                       |                                          | sorted arrays                           |                                        
+
 	Bucket and radix sort
 	

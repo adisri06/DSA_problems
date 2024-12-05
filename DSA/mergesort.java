@@ -1,72 +1,74 @@
 package DSA;
-import java.util.Scanner;
 
 public class mergesort {
+    public static GenerateArray genz = new GenerateArray(6);
+
+    public int[] mergeSorting(int[] arr, int start, int end) {
+        if (start < end) {
+
+            int mid = start + (end - start) / 2;
+            System.out.println("\nInside Merge Sorting:" + start + " " + end + " " + mid);
+
+            arr = mergeSorting(arr, start, mid);
+            arr = mergeSorting(arr, mid + 1, end);
+            arr = merge(arr, start, mid, end);
+        }
+        return arr;
+    }
+
+    public int[] merge(int[] arr, int start, int mid, int end) {
+        System.out.println("\nInside Merge:" + start + " " + end + " " + mid);
+        int left = mid - start + 1;
+        int right = end - mid;
+        int leftArray[] = new int[left];
+        int rightArray[] = new int[right];
+        for (int i = 0; i < left; i++) {
+            leftArray[i] = arr[start + i];
+        }
+        for (int i = 0; i < right; i++) {
+            rightArray[i] = arr[mid + 1 + i];
+        }
+        int i = 0;
+        int j = 0;
+        int k = start;
+        while (i < left && j < right) {
+            if (leftArray[i] < rightArray[j]) {
+                arr[k] = leftArray[i];
+                i++;
+                k++;
+            } else {
+                arr[k] = rightArray[j];
+                j++;
+                k++;
+            }
+        }
+        while (i < left) {
+            arr[k] = leftArray[i];
+            i++;
+            k++;
+        }
+        while (j < right) {
+            arr[k] = rightArray[j];
+            j++;
+            k++;
+        }
+        return arr;
+
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        // Ask for the number of elements
-        System.out.print("Enter the number of elements in the array: ");
-        int n = scanner.nextInt();
+        int arr[] = genz.generate();
+        System.out.println("Generated Array is :");
+        genz.print(arr);
+        mergesort obj = new mergesort();
+        int start = 0;
+        int end = arr.length - 1;
+        arr = obj.mergeSorting(arr, start, end);
+        System.out.println("Sorted Array is :");
 
-        // Declare the array
-        int[] arr = new int[n];
-
-        // Take input from the user
-        System.out.println("Enter the elements of the array:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
-        }
-        mergeArray(arr, 0, arr.length);
-        // Print the array to verify input
-        System.out.println("The sorted array elements are:");
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-
-        scanner.close();
-    }
-
-    public static void mergeArray(int arr[], int start, int last) {
-        System.out.println("merging arrays with  start :" + start + "  and last : " + last);
-        if (last - start > 1) { // Ensure more than one element to merge
-            int mid = start + (last - start) / 2;
-            System.out.println("Now units are start:  " + start + " mid:   " + mid+ " last:  " +last);
-            mergeArray(arr, start, mid);
-            System.out.println("Now new units are start:  " + start + " mid:   " + mid+ " last:  " +last);
-
-            mergeArray(arr, mid, last);  // Pass 'last' directly here
-            merge(arr, start, mid, last);
-        }
+        genz.print(arr);
 
     }
 
-    public static void merge(int arr[], int start, int mid, int last) {
-        System.out.println("Meging smallest possible arrray ----------");
-
-        int[] newArray = new int[last -start];
-        int leftpointer = start, midpointer = mid, x=0 ;
-
-        while(leftpointer< mid && midpointer< last ){
-            if(arr[leftpointer]< arr[midpointer]){
-                newArray[x++] = arr[leftpointer++];
-            }
-            else{
-                newArray[x++] = arr[midpointer++];
-
-            }
-
-        }
-        while(leftpointer< mid)
-        {
-            newArray[x++] = arr[leftpointer++];
-        }
-        while(midpointer< last)
-        {
-            newArray[x++] = arr[midpointer++];
-        }
-        for (int i = 0; i < newArray.length; i++) {
-            arr[start + i] = newArray[i];
-        }
-    }
 }
