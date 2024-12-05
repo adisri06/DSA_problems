@@ -13,7 +13,9 @@ public class InsertionSort {
         for(int i =1;i< length;i++){
             int current = arr[i];
             int j =i-1;
-            while(j>=0&& arr[j]>current){
+            // if arr[j] > current Ascending order sorting
+            // if arr[j] < current Descending order sorting
+            while(j>=0&& arr[j]<current){
                 arr[j+1] = arr[j];
                 j--;
             }
