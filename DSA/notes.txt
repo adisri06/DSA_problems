@@ -646,3 +646,6 @@ Performance: Due to its tree-based structure, TreeMap operations (put(), get(), 
 	•	Faster than linear search for large datasets due to logarithmic time complexity.
 	•	Alternative:
 	•	Linear Search is better for unsorted data or small datasets.
+
+	Bucket and radix sort
+	
