@@ -666,5 +666,67 @@ Efficiency             | Slowest, many swaps                     | Efficient for
 Usage Scenario         | Rarely used in practice                 | Good for small datasets or nearly       | When minimizing swaps is important      
                        |                                          | sorted arrays                           |                                        
 
-	Bucket and radix sort
-	
+----------------------
+Heap Sort - Quick Notes:
+
+What is Heap Sort?
+	•	Heap Sort is a sorting algorithm that uses a heap data structure to sort elements.
+	•	It turns the array into a binary heap (either max-heap or min-heap), then repeatedly extracts the root (largest or smallest element) and places it in the sorted array.
+
+Key Concepts:
+	1.	Heap: A special tree-based data structure that satisfies the heap property.
+	•	Max-Heap: Parent nodes are larger than their children (used for ascending sort).
+	•	Min-Heap: Parent nodes are smaller than their children (used for descending sort).
+	2.	Heapify: Rearranging the tree to ensure it follows the heap property.
+
+How It Works:
+	1.	Build the heap: Convert the unsorted array into a heap.
+	2.	Sort the array: Swap the root of the heap with the last element, reduce the heap size, and then heapify the root. Repeat until the heap is empty.
+
+Time Complexity:
+	•	Best, Worst, and Average Case: O(n log n)
+	•	Space Complexity: O(1) (in-place sorting)
+
+Advantages:
+	•	Efficient: O(n log n) in all cases.
+	•	In-place: No extra memory needed like merge sort.
+	•	Stable for large datasets.
+
+Disadvantages:
+	•	Not stable (relative order of equal elements may change).
+	•	Slower than quicksort for small datasets.
+
+Real-World Use:
+	•	Great for sorting large datasets when you need consistent performance and constant space.
+
+Heap sort is a reliable, efficient sorting algorithm, but it’s not the fastest for small lists and doesn’t preserve the order of equal elements.	
+
+-------------------
+Hash Tables - 
+	•	Definition:
+	•	A hash table stores key-value pairs and supports operations like insert, find, delete, and update.
+	•	Core Concept:
+	•	A hash table uses an array of buckets/slots to store key-value pairs.
+	•	A hash function maps keys to specific slots (e.g., “John” -> slot 0).
+	•	Collision Handling:
+	•	Chaining: Each slot holds a list of key-value pairs.
+	•	Collisions occur when multiple keys hash to the same slot.
+	•	Operations:
+	•	Insert: Compute hash, find slot, insert key-value.
+	•	Find: Compute hash, search the list at the slot.
+	•	Delete: Compute hash, remove key-value from the list.
+	•	Performance:
+	•	Worst Case: O(n) if all keys hash to the same slot.
+	•	Average Case: O(n/m) (n = elements, m = slots).
+	•	Load Factor:
+	•	The load factor is the number of elements divided by the number of slots.
+	•	If load factor exceeds 0.5, rehashing occurs (new table with twice the size).
+	•	Rehashing:
+	•	O(n + m) time complexity. Elements are moved to a new table with more slots.
+	•	Hash Function:
+	•	A good hash function minimizes collisions and ensures even distribution of keys.
+	•	Collision Resolution Alternatives:
+	•	Open Addressing: Finds next available slot.
+	•	Cuckoo Hashing: Uses multiple hash functions to resolve collisions.
+	•	Conclusion:
+	•	Efficient for searching, inserting, and deleting if well-designed. Key challenge: handling collisions and designing a good hash function.
