@@ -105,6 +105,4 @@ public class SudokuSolver {
             System.out.println();
         }
     }
-}public class SudokuSolver {
-
 }
